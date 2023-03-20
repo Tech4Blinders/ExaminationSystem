@@ -45,12 +45,9 @@ as
 	else 
 		SELECT 'Exam doesnot exist';
 -- INSERT
-CREATE PROCEDURE SP_Insert_Exam (@examId int , @examType nvarchar(MAX),@nMCQ int,@nTF int)
+alter PROCEDURE SP_Insert_Exam (@examType nvarchar(MAX),@nMCQ int,@nTF int)
 as
-	if EXISTS (SELECT ex_id FROM Exam WHERE ex_id = @examId)
-		SELECT 'Exam Already Exists'
-	else
-		INSERT INTO Exam (ex_id , ex_type , no_mcq , no_tf) VALUES (@examId , @examType , @nMCQ , @nTF);
+	INSERT INTO Exam (ex_type , no_mcq , no_tf) VALUES (@examType , @nMCQ , @nTF);
 -- UPDATE
 CREATE PROCEDURE SP_Update_Exam (@examId int , @examType nvarchar(MAX), @nMCQ int, @nTF int)
 as
@@ -93,10 +90,10 @@ as
 	else 
 			SELECT 'Answer doesnot exist';
 -- INSERT
-CREATE PROCEDURE SP_Insert_StdQuesAnswer (@studId int , @examId int , @quesId int, @Answer nvarchar(50))
+alter PROCEDURE SP_Insert_StdQuesAnswer (@studId int , @examId int , @quesId int, @Answer nvarchar(50))
 as
-	if EXISTS (SELECT Answer FROM Student_Exam_Question WHERE Std_id = @studId AND ex_id = @examId AND q_id = @quesId)
-		SELECT 'Answer Already Exists'
+	if EXISTS (SELECT Std_id, ex_id, q_id FROM Student_Exam_Question WHERE Std_id = @studId AND ex_id = @examId AND q_id = @quesId)
+		SELECT 'invalid data'
 	else
 		INSERT INTO Student_Exam_Question VALUES (@studId , @examId , @quesId , @Answer);
 -- UPDATE
