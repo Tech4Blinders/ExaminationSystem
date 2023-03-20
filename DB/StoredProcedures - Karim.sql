@@ -97,14 +97,14 @@ as
 	else
 		INSERT INTO Student_Exam_Question VALUES (@studId , @examId , @quesId , @Answer);
 -- UPDATE
-CREATE PROCEDURE SP_Update_StdQuesAnswer (@studId int , @examId int , @quesId int, @Answer nvarchar(50))
+ALTER PROCEDURE SP_Update_StdQuesAnswer (@studId int , @examId int , @quesId int, @Answer nvarchar(50))
 as
-	if EXISTS (SELECT Answer FROM Student_Exam_Question WHERE Std_id = @studId AND   ex_id = @examId AND   q_id = @quesId)
+	if EXISTS (SELECT Std_id,ex_id,q_id FROM Student_Exam_Question WHERE Std_id = @studId AND   ex_id = @examId AND   q_id = @quesId)
 		UPDATE Student_Exam_Question 
 		SET Answer = @Answer
-		WHERE Std_id = @studId
+		WHERE Std_id = @studId AND   ex_id = @examId AND   q_id = @quesId
 	else 
-		SELECT 'Answer to this question doesnot exist';
+		SELECT 'Invalid data';
 -- DELETE
 CREATE PROCEDURE SP_Delete_StdQuesAnswer (@studId int , @examId int , @quesId int)
 as
