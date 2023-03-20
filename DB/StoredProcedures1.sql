@@ -45,9 +45,9 @@ as
 	else 
 		SELECT 'Exam doesnot exist';
 -- INSERT
-alter PROCEDURE SP_Insert_Exam (@examType nvarchar(MAX),@nMCQ int,@nTF int)
+ALTER PROCEDURE SP_Insert_Exam (@examId int , @examType nvarchar(MAX),@nMCQ int,@nTF int)
 as
-	INSERT INTO Exam (ex_type , no_mcq , no_tf) VALUES (@examType , @nMCQ , @nTF);
+	INSERT INTO Exam (ex_id , ex_type , no_mcq , no_tf) VALUES (@examId , @examType , @nMCQ , @nTF);
 -- UPDATE
 CREATE PROCEDURE SP_Update_Exam (@examId int , @examType nvarchar(MAX), @nMCQ int, @nTF int)
 as
