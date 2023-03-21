@@ -50,9 +50,8 @@ namespace ExaminationSystem
                     {
                         Course course = context.Courses.Where(c => c.crs_name == CourseBox.SelectedItem.ToString()).First();
                         context.SP_Insert_Topic(ID, topicNameTextbox.Text, course.crs_id);
-                        //context.SaveChanges();
                         MessageBox.Show("Topic Added Successfully!");
-                        //this.Close();
+                        this.Close();
                     }
                 }
             }
