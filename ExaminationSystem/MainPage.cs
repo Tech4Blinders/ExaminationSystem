@@ -48,5 +48,11 @@ namespace ExaminationSystem
             AddTopic newTopicForm = new AddTopic();
             newTopicForm.ShowDialog();
         }
+
+        private void CourseBtn_Click(object sender, EventArgs e)
+        {
+            AddCourse addCrs = new AddCourse();
+            addCrs.ShowDialog();
+        }
     }
 }

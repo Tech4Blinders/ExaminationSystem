@@ -44,39 +44,47 @@ namespace ExaminationSystem
                 bool idParsed = int.TryParse(IdTxtBox.Text, out id);
                 if (idParsed)
                 {
-                    int salary;
-                    bool salaryParsed = int.TryParse(SalaryTxtBox.Text,out salary);
-                    if (salaryParsed)
+                    var exist = data.Instructors.Find(id);
+                    if (exist == null)
                     {
-                        bool charExist = false;
-                        string phone = "";
-                        int num;
-                        for(int i = 0; i < PhoneTxtBox.Text.Length && !charExist; i++)
+                        int salary;
+                        bool salaryParsed = int.TryParse(SalaryTxtBox.Text, out salary);
+                        if (salaryParsed)
                         {
-                            bool charParsed = int.TryParse(PhoneTxtBox.Text.Substring(i, 1),out num);
-                            if (charParsed)
+                            bool charExist = false;
+                            string phone = "";
+                            int num;
+                            for (int i = 0; i < PhoneTxtBox.Text.Length && !charExist; i++)
                             {
-                                phone += num;
+                                bool charParsed = int.TryParse(PhoneTxtBox.Text.Substring(i, 1), out num);
+                                if (charParsed)
+                                {
+                                    phone += num;
+                                }
+                                else
+                                {
+                                    charExist = true;
+                                    phone = "";
+                                }
+                            }
+                            if (!charExist)
+                            {
+                                var res = data.SP_AddInstructor(id, NameTxtBox.Text, salary, phone);
+                                MessageBox.Show("Instructor Added");
                             }
                             else
                             {
-                                charExist = true;
-                                phone = "";
+                                MessageBox.Show("There is something wrong in phone field");
                             }
-                        }
-                        if (!charExist)
-                        {
-                            var res = data.SP_AddInstructor(id, NameTxtBox.Text, salary, phone);
-                            MessageBox.Show("Instructor Added");
                         }
                         else
                         {
-                            MessageBox.Show("There is something wrong in phone field");
+                            MessageBox.Show("There is something wrong in salary field");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("There is something wrong in salary field");
+                        MessageBox.Show("Instructor id already exists");
                     }
                 }
                 else
@@ -88,6 +96,11 @@ namespace ExaminationSystem
             {
                 MessageBox.Show("Please fill all form fields");
             }
+        }
+
+        private void CancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
