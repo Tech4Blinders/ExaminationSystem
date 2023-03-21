@@ -29,5 +29,11 @@ namespace ExaminationSystem
             AddQuestion add=new AddQuestion();
             add.ShowDialog();
         }
+
+        private void InstructorBrn_Click(object sender, EventArgs e)
+        {
+            AddInstructor addIns = new AddInstructor();
+            addIns.ShowDialog();
+        }
     }
 }
