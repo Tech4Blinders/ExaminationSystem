@@ -26,10 +26,7 @@ namespace ExaminationSystem
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void AddInstBtn_Click(object sender, EventArgs e)
         {

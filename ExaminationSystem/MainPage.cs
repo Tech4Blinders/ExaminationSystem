@@ -35,5 +35,18 @@ namespace ExaminationSystem
             AddInstructor addIns = new AddInstructor();
             addIns.ShowDialog();
         }
+
+        private void AddStudentBtn_Click(object sender, EventArgs e)
+        {
+            AddStudent newStdForm = new AddStudent();
+            newStdForm.ShowDialog();
+
+        }
+
+        private void AddTopicBtn_Click(object sender, EventArgs e)
+        {
+            AddTopic newTopicForm = new AddTopic();
+            newTopicForm.ShowDialog();
+        }
     }
 }
