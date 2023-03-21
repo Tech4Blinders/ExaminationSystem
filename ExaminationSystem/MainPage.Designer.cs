@@ -28,20 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnDepartment = new System.Windows.Forms.Button();
+            this.btnQuestion = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Form1
+            // btnDepartment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.btnDepartment.Location = new System.Drawing.Point(513, 32);
+            this.btnDepartment.Name = "btnDepartment";
+            this.btnDepartment.Size = new System.Drawing.Size(75, 23);
+            this.btnDepartment.TabIndex = 0;
+            this.btnDepartment.Text = "Department";
+            this.btnDepartment.UseVisualStyleBackColor = true;
+            this.btnDepartment.Click += new System.EventHandler(this.btnDepartment_Click);
+            // 
+            // btnQuestion
+            // 
+            this.btnQuestion.Location = new System.Drawing.Point(513, 125);
+            this.btnQuestion.Name = "btnQuestion";
+            this.btnQuestion.Size = new System.Drawing.Size(75, 23);
+            this.btnQuestion.TabIndex = 1;
+            this.btnQuestion.Text = "Question";
+            this.btnQuestion.UseVisualStyleBackColor = true;
+            this.btnQuestion.Click += new System.EventHandler(this.btnQuestion_Click);
+            // 
+            // MainPage
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
+            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.btnQuestion);
+            this.Controls.Add(this.btnDepartment);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "MainPage";
             this.Text = "Examination System";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnDepartment;
+        private System.Windows.Forms.Button btnQuestion;
     }
 }
 
