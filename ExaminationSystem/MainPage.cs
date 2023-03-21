@@ -16,5 +16,18 @@ namespace ExaminationSystem
         {
             InitializeComponent();
         }
+
+        private void btnDepartment_Click(object sender, EventArgs e)
+        {
+            AddDepartment add=new AddDepartment();
+            add.ShowDialog();
+
+        }
+
+        private void btnQuestion_Click(object sender, EventArgs e)
+        {
+            AddQuestion add=new AddQuestion();
+            add.ShowDialog();
+        }
     }
 }
