@@ -34,14 +34,14 @@
             this.AddStudentBtn = new System.Windows.Forms.Button();
             this.AddTopicBtn = new System.Windows.Forms.Button();
             this.CourseBtn = new System.Windows.Forms.Button();
+            this.btnExam = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDepartment
             // 
-            this.btnDepartment.Location = new System.Drawing.Point(598, 39);
-            this.btnDepartment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDepartment.Location = new System.Drawing.Point(513, 32);
             this.btnDepartment.Name = "btnDepartment";
-            this.btnDepartment.Size = new System.Drawing.Size(88, 28);
+            this.btnDepartment.Size = new System.Drawing.Size(75, 23);
             this.btnDepartment.TabIndex = 0;
             this.btnDepartment.Text = "Department";
             this.btnDepartment.UseVisualStyleBackColor = true;
@@ -49,10 +49,9 @@
             // 
             // btnQuestion
             // 
-            this.btnQuestion.Location = new System.Drawing.Point(598, 154);
-            this.btnQuestion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQuestion.Location = new System.Drawing.Point(513, 125);
             this.btnQuestion.Name = "btnQuestion";
-            this.btnQuestion.Size = new System.Drawing.Size(88, 28);
+            this.btnQuestion.Size = new System.Drawing.Size(75, 23);
             this.btnQuestion.TabIndex = 1;
             this.btnQuestion.Text = "Question";
             this.btnQuestion.UseVisualStyleBackColor = true;
@@ -60,9 +59,10 @@
             // 
             // InstructorBrn
             // 
-            this.InstructorBrn.Location = new System.Drawing.Point(13, 43);
+            this.InstructorBrn.Location = new System.Drawing.Point(11, 35);
+            this.InstructorBrn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.InstructorBrn.Name = "InstructorBrn";
-            this.InstructorBrn.Size = new System.Drawing.Size(75, 23);
+            this.InstructorBrn.Size = new System.Drawing.Size(64, 19);
             this.InstructorBrn.TabIndex = 2;
             this.InstructorBrn.Text = "Instructor";
             this.InstructorBrn.UseVisualStyleBackColor = true;
@@ -70,10 +70,9 @@
             // 
             // AddStudentBtn
             // 
-            this.AddStudentBtn.Location = new System.Drawing.Point(306, 211);
-            this.AddStudentBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddStudentBtn.Location = new System.Drawing.Point(262, 171);
             this.AddStudentBtn.Name = "AddStudentBtn";
-            this.AddStudentBtn.Size = new System.Drawing.Size(88, 28);
+            this.AddStudentBtn.Size = new System.Drawing.Size(75, 23);
             this.AddStudentBtn.TabIndex = 3;
             this.AddStudentBtn.Text = "Add Student";
             this.AddStudentBtn.UseVisualStyleBackColor = true;
@@ -81,10 +80,9 @@
             // 
             // AddTopicBtn
             // 
-            this.AddTopicBtn.Location = new System.Drawing.Point(431, 211);
-            this.AddTopicBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddTopicBtn.Location = new System.Drawing.Point(369, 171);
             this.AddTopicBtn.Name = "AddTopicBtn";
-            this.AddTopicBtn.Size = new System.Drawing.Size(88, 28);
+            this.AddTopicBtn.Size = new System.Drawing.Size(75, 23);
             this.AddTopicBtn.TabIndex = 4;
             this.AddTopicBtn.Text = "Add Topic";
             this.AddTopicBtn.UseVisualStyleBackColor = true;
@@ -92,19 +90,31 @@
             // 
             // CourseBtn
             // 
-            this.CourseBtn.Location = new System.Drawing.Point(13, 120);
+            this.CourseBtn.Location = new System.Drawing.Point(11, 98);
+            this.CourseBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CourseBtn.Name = "CourseBtn";
-            this.CourseBtn.Size = new System.Drawing.Size(75, 23);
+            this.CourseBtn.Size = new System.Drawing.Size(64, 19);
             this.CourseBtn.TabIndex = 5;
             this.CourseBtn.Text = "Course";
             this.CourseBtn.UseVisualStyleBackColor = true;
             this.CourseBtn.Click += new System.EventHandler(this.CourseBtn_Click);
             // 
+            // btnExam
+            // 
+            this.btnExam.Location = new System.Drawing.Point(513, 206);
+            this.btnExam.Name = "btnExam";
+            this.btnExam.Size = new System.Drawing.Size(75, 23);
+            this.btnExam.TabIndex = 6;
+            this.btnExam.Text = "Exam";
+            this.btnExam.UseVisualStyleBackColor = true;
+            this.btnExam.Click += new System.EventHandler(this.btnExam_Click);
+            // 
             // MainPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.btnExam);
             this.Controls.Add(this.CourseBtn);
             this.Controls.Add(this.AddTopicBtn);
             this.Controls.Add(this.AddStudentBtn);
@@ -126,6 +136,7 @@
         private System.Windows.Forms.Button AddStudentBtn;
         private System.Windows.Forms.Button AddTopicBtn;
         private System.Windows.Forms.Button CourseBtn;
+        private System.Windows.Forms.Button btnExam;
     }
 }
 

@@ -54,5 +54,24 @@ namespace ExaminationSystem
             AddCourse addCrs = new AddCourse();
             addCrs.ShowDialog();
         }
+
+        private void btnExam_Click(object sender, EventArgs e)
+        {
+            int id = 0;
+            int crsid = 0;
+            int exid = 0;
+            SubmitStudent sub=new SubmitStudent();
+            sub.ShowDialog();
+            if (sub.DialogResult == DialogResult.OK)
+            {
+                id = sub.ID;
+                crsid = sub.CrsID;
+                exid = sub.ExamID;
+                ExamForm exam = new ExamForm(id,crsid,exid);
+                exam.ShowDialog();
+
+
+            }
+        }
     }
 }
