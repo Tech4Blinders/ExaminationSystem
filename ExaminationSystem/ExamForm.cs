@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Objects;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace ExaminationSystem
         
         List <Label> labels = new List<Label>();
         List<ComboBox> comboBox = new List<ComboBox>();
+        List<string> answers=new List<string>();
+
         public ExamForm(int i ,int j ,int k)
         {
             InitializeComponent();
@@ -55,13 +58,51 @@ namespace ExaminationSystem
                 lb.Name = $"label{i}";
                 lb.Size = new Size(218, 32);
                 lb.TabIndex = 28;
-                lb.Text = q.question1;
+                lb.Text = q.question1 + "\n\n\n" +
+                          "1)  " + q.choice_1 + "\n\n" +
+                          "2)  " + q.choice_2 + "\n\n";
+                lb.Text += q.choice_3 ==null ? " " : $"3)  {q.choice_3}" + "\n\n";
+                lb.Text+=  q.choice_4 ==null ? " " : $"4)  {q.choice_4}" + "\n\n";
                 #endregion
+
                 labels.Add(lb);
-                y += 100;
-                i++;
                 this.Controls.Add(lb);
+
+                ComboBox cbx = new ComboBox();
+                comboBox.Add(cbx);
+                cbx.Location = new Point(this.Width-200, y);
+                cbx.Name = $"comboBox{i}";
+                if (q.q_score == 2)
+                {
+                    cbx.Items.AddRange(new string[] {"1","2","3","4"});
+                }
+                else
+                {
+                    cbx.Items.AddRange(new string[] { "1", "2" });
+
+                }
+                this.Controls.Add(cbx);
+
+
+                y += 300;
+                i++;
             }
+            Button btn=new Button();
+            btn.Location = new Point(this.Width / 2, y);
+            btn.Text = "submit";
+            Controls.Add(btn);
+            btn.Click += new EventHandler(btn_click);
+        }
+        public void btn_click(object sender, EventArgs e)
+        {
+            for(int i=0;i<qids.Count;i++)
+            {
+              var str= context.SP_Update_StdQuesAnswer(stdId, exId, qids[i], comboBox[i].SelectedItem.ToString());
+                
+            }
+            var str2= context.SubmitGrade(stdId, exId,crsId);
+            MessageBox.Show("hello");
+
         }
     }
 }
