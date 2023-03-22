@@ -95,14 +95,23 @@ namespace ExaminationSystem
         }
         public void btn_click(object sender, EventArgs e)
         {
-            for(int i=0;i<qids.Count;i++)
+            for (int i = 0; i < qids.Count; i++)
             {
-              var str= context.SP_Update_StdQuesAnswer(stdId, exId, qids[i], comboBox[i].SelectedItem.ToString());
-                
+                //context.SP_Update_StdQuesAnswer(stdId, exId, qids[i], comboBox[i].SelectedItem.ToString());
+                var stdExQues= context.Student_Exam_Question.Find(stdId, exId, qids[i]);
+                stdExQues.Answer = (comboBox[i].SelectedItem == null)? "0" : comboBox[i].SelectedItem.ToString();
+                context.SaveChanges();
             }
-            var str2= context.SubmitGrade(stdId, exId,crsId);
-            MessageBox.Show("hello");
-
+            try
+            {
+                context.SubmitGrade(stdId, exId, crsId);
+            }
+            catch
+            {
+                var query2 = context.Student_Exam_Course.Find(stdId, crsId, exId);
+                
+                MessageBox.Show($"your Grade={query2.Grade}");
+            }
         }
     }
 }
