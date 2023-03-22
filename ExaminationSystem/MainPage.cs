@@ -69,7 +69,7 @@ namespace ExaminationSystem
                 exid = sub.ExamID;
                 ExamForm exam = new ExamForm(id,crsid,exid);
                 exam.ShowDialog();
-
+                
 
             }
         }
