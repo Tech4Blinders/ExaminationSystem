@@ -194,7 +194,7 @@ as
 						declare @i int = 0;
 						while @i < @no_mcq
 							BEGIN				
-								select @quest_id = (select top 1 q_id from Question where q_score = 2 and crs_id = 1 ORDER BY NEWID())
+								select @quest_id = (select top 1 q_id from Question where q_score = 2 and crs_id = @course_id ORDER BY NEWID())
 								IF NOT EXISTS (SELECT Std_id, ex_id, q_id FROM Student_Exam_Question WHERE Std_id = @std_id AND ex_id = @exam_id AND q_id = @quest_id)
 									BEGIN
 										exec SP_Insert_StdQuesAnswer @std_id, @exam_id, @quest_id, null;
@@ -205,7 +205,7 @@ as
 						set @i = 0;
 						while @i < @no_tf
 							BEGIN
-								select @quest_id = (select top 1 q_id from Question where q_score = 1 and crs_id = 1 ORDER BY NEWID())
+								select @quest_id = (select top 1 q_id from Question where q_score = 1 and crs_id = @course_id ORDER BY NEWID())
 								IF NOT EXISTS (SELECT Std_id, ex_id, q_id FROM Student_Exam_Question WHERE Std_id = @std_id AND ex_id = @exam_id AND q_id = @quest_id)
 									BEGIN
 										exec SP_Insert_StdQuesAnswer @std_id, @exam_id, @quest_id, null;
