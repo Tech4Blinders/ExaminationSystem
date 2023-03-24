@@ -6,10 +6,10 @@
     <DataSource Name="DataSource1">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=mssql-116398-0.cloudclusters.net,17876;Initial Catalog=ExaminationSystem</ConnectString>
-        <Prompt>Specify a user name and password for data source DataSource1:</Prompt>
+        <ConnectString>Data Source=.;Initial Catalog=ExaminationSystem</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:SecurityType>DataBase</rd:SecurityType>
+      <rd:SecurityType>Integrated</rd:SecurityType>
       <rd:DataSourceID>fc78d26f-60be-44f8-8ba0-3a55f3cf1708</rd:DataSourceID>
     </DataSource>
   </DataSources>
