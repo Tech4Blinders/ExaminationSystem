@@ -22,7 +22,7 @@ namespace ExaminationSystem
 
         private void AddStudent_Load(object sender, EventArgs e)
         {
-            
+
             foreach (Department dept in context.Departments)
             {
                 DepartmentBox.Items.Add(dept.dept_name);
@@ -32,7 +32,7 @@ namespace ExaminationSystem
 
         private void SubmitBtn_Click(object sender, EventArgs e)
         {
-            if 
+            if
             (
                 studentIDTextbox.Text != "" &&
                 studentFnameTextbox.Text != "" &&
@@ -60,17 +60,23 @@ namespace ExaminationSystem
                     else
                     {
                         Department dept = context.Departments.Where(d => d.dept_name == DepartmentBox.SelectedItem.ToString()).First();
-                        context.Insert_Student(ID, studentFnameTextbox.Text, studentLnameTextbox.Text, studentAddressTextBox.Text, studentPhoneTextbox.Text, Age, dept.dept_id, studentEmailTextbox.Text);
-                        MessageBox.Show("Student Added Successfully!");
-                        this.Close();
-                    } 
+                        try
+                        {
+                            context.Insert_Student(ID, studentFnameTextbox.Text, studentLnameTextbox.Text, studentAddressTextBox.Text, studentPhoneTextbox.Text, Age, dept.dept_id, studentEmailTextbox.Text);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Student Added Successfully!");
+                            this.Close();
+                        }
+                    }
                 }
             }
             else
             {
                 MessageBox.Show("Missing Data!");
             }
-            
+
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)

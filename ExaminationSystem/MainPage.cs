@@ -19,14 +19,14 @@ namespace ExaminationSystem
 
         private void btnDepartment_Click(object sender, EventArgs e)
         {
-            AddDepartment add=new AddDepartment();
+            AddDepartment add = new AddDepartment();
             add.ShowDialog();
 
         }
 
         private void btnQuestion_Click(object sender, EventArgs e)
         {
-            AddQuestion add=new AddQuestion();
+            AddQuestion add = new AddQuestion();
             add.ShowDialog();
         }
 
@@ -57,15 +57,12 @@ namespace ExaminationSystem
 
         private void btnExam_Click(object sender, EventArgs e)
         {
-            
-            SubmitStudent sub=new SubmitStudent();
+            SubmitStudent sub = new SubmitStudent();
             sub.ShowDialog();
             if (sub.DialogResult == DialogResult.OK)
             {
-                ExamForm exam = new ExamForm(sub.ID,sub.CrsID,sub.ExamID);
+                ExamForm exam = new ExamForm(sub.ID, sub.CrsID, sub.ExamID);
                 exam.ShowDialog();
-                
-
             }
         }
     }

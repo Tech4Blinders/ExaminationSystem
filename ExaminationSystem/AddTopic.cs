@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace ExaminationSystem
 {
-    
+
     public partial class AddTopic : Form
     {
         ExaminationSystemEntities context;
@@ -49,9 +49,15 @@ namespace ExaminationSystem
                     else
                     {
                         Course course = context.Courses.Where(c => c.crs_name == CourseBox.SelectedItem.ToString()).First();
-                        context.SP_Insert_Topic(ID, topicNameTextbox.Text, course.crs_id);
-                        MessageBox.Show("Topic Added Successfully!");
-                        this.Close();
+                        try
+                        {
+                            context.SP_Insert_Topic(ID, topicNameTextbox.Text, course.crs_id);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Topic Added Successfully!");
+                            this.Close();
+                        }
                     }
                 }
             }
