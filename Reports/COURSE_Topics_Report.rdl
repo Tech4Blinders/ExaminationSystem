@@ -6,10 +6,10 @@
     <DataSource Name="ExaminationSystem">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=mssql-116398-0.cloudclusters.net,17876;Initial Catalog=ExaminationSystem</ConnectString>
-        <Prompt>Specify a user name and password for data source ExaminationSystem:</Prompt>
+        <ConnectString>Data Source=.;Initial Catalog=ExaminationSystem</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
-      <rd:SecurityType>DataBase</rd:SecurityType>
+      <rd:SecurityType>Integrated</rd:SecurityType>
       <rd:DataSourceID>0fa2e5b4-8dc9-44a5-ad7a-f020b7929da8</rd:DataSourceID>
     </DataSource>
   </DataSources>
@@ -316,8 +316,8 @@
             <DataSetName>DataSet1</DataSetName>
             <Top>25.36825mm</Top>
             <Left>23.25158mm</Left>
-            <Height>26.43125mm</Height>
-            <Width>88.87292mm</Width>
+            <Height>26.43124mm</Height>
+            <Width>88.87291mm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
