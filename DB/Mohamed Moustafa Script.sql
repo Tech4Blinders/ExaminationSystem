@@ -226,15 +226,4 @@ as
 Making_Exam 2, 1, 7, 3, 'Practical'
 
 
----------------------------------------------------------------------------------------------------------------
-
-create procedure Generate_Exam @std_id int, @ex_id int, @crs_id int
-as
-begin
-	select seq.q_id, q.question, q.choice_1, q.choice_2, q.choice_3, q.choice_4, q.q_score
-	from Student_Exam_Question seq, Question as q
-	where seq.q_id = q.q_id and seq.Std_id = @std_id and seq.ex_id = @ex_id;
-
-	exec Insert_Student_Exam_Course @std_id, @crs_id, @ex_id, null
-end
 
