@@ -16,16 +16,16 @@ namespace ExaminationSystem
         public int stdId { get; set; }
         public int exId { get; set; }
         public int crsId { get; set; }
-        ExaminationSystemEntities context= new ExaminationSystemEntities(); 
-        
-        List<int> qids= new List<int>();
-        List<Question> questions = new List<Question>();  
-        
-        List <Label> labels = new List<Label>();
-        List<ComboBox> comboBox = new List<ComboBox>();
-        List<string> answers=new List<string>();
+        ExaminationSystemEntities context = new ExaminationSystemEntities();
 
-        public ExamForm(int i ,int j ,int k)
+        List<int> qids = new List<int>();
+        List<Question> questions = new List<Question>();
+
+        List<Label> labels = new List<Label>();
+        List<ComboBox> comboBox = new List<ComboBox>();
+        List<string> answers = new List<string>();
+
+        public ExamForm(int i, int j, int k)
         {
             InitializeComponent();
             stdId = i;
@@ -41,19 +41,19 @@ namespace ExaminationSystem
             int x = 30;
             int y = 50;
             int i = 0;
-            foreach(var ob in obj)
+            foreach (var ob in obj)
             {
-              qids.Add(ob.q_id);
+                qids.Add(ob.q_id);
             }
-            
-            foreach(var id in qids)
+
+            foreach (var id in qids)
             {
                 var q = context.Questions.Find(id);
                 questions.Add(q);
                 Label lb = new Label();
                 #region labelProperties
                 lb.AutoSize = true;
-                lb.Font = new Font("Microsoft Sans Serif",10F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+                lb.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
                 lb.Location = new Point(x, y);
                 lb.Name = $"label{i}";
                 lb.Size = new Size(218, 32);
@@ -61,8 +61,8 @@ namespace ExaminationSystem
                 lb.Text = q.question1 + "\n\n\n" +
                           "1)  " + q.choice_1 + "\n\n" +
                           "2)  " + q.choice_2 + "\n\n";
-                lb.Text += q.choice_3 ==null ? " " : $"3)  {q.choice_3}" + "\n\n";
-                lb.Text+=  q.choice_4 ==null ? " " : $"4)  {q.choice_4}" + "\n\n";
+                lb.Text += q.choice_3 == null ? " " : $"3)  {q.choice_3}" + "\n\n";
+                lb.Text += q.choice_4 == null ? " " : $"4)  {q.choice_4}" + "\n\n";
                 #endregion
 
                 labels.Add(lb);
@@ -70,11 +70,11 @@ namespace ExaminationSystem
 
                 ComboBox cbx = new ComboBox();
                 comboBox.Add(cbx);
-                cbx.Location = new Point(this.Width-200, y);
+                cbx.Location = new Point(this.Width - 200, y);
                 cbx.Name = $"comboBox{i}";
                 if (q.q_score == 2)
                 {
-                    cbx.Items.AddRange(new string[] {"1","2","3","4"});
+                    cbx.Items.AddRange(new string[] { "1", "2", "3", "4" });
                 }
                 else
                 {
@@ -87,7 +87,7 @@ namespace ExaminationSystem
                 y += 300;
                 i++;
             }
-            Button btn=new Button();
+            Button btn = new Button();
             btn.Location = new Point(this.Width / 2, y);
             btn.Text = "submit";
             Controls.Add(btn);
@@ -97,8 +97,8 @@ namespace ExaminationSystem
         {
             for (int i = 0; i < qids.Count; i++)
             {
-                var stdExQues= context.Student_Exam_Question.Find(stdId, exId, qids[i]);
-                stdExQues.Answer = (comboBox[i].SelectedItem == null)? "0" : comboBox[i].SelectedItem.ToString();
+                var stdExQues = context.Student_Exam_Question.Find(stdId, exId, qids[i]);
+                stdExQues.Answer = (comboBox[i].SelectedItem == null) ? "0" : comboBox[i].SelectedItem.ToString();
                 context.SaveChanges();
             }
             try
@@ -108,8 +108,9 @@ namespace ExaminationSystem
             catch
             {
                 var query2 = context.Student_Exam_Course.Find(stdId, crsId, exId);
-                
+
                 MessageBox.Show($"your Grade={query2.Grade}");
+                this.Close();
             }
         }
     }
