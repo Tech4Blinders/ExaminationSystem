@@ -20,12 +20,6 @@ as
 	return @x
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
-DECLARE @return_value int
-EXEC	@return_value = CalcResult 1 ,1
-SELECT @return_value
-SELECT	'Return Value' = @return_value
--------------------------------------------------------------------------------
--------------------------------------------------------------------------------
 CREATE PROCEDURE SubmitGrade ( @Std_id int , @ex_id int , @course_id int )
 as
 	DECLARE @grade int
