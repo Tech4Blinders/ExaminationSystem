@@ -97,7 +97,6 @@ namespace ExaminationSystem
         {
             for (int i = 0; i < qids.Count; i++)
             {
-                //context.SP_Update_StdQuesAnswer(stdId, exId, qids[i], comboBox[i].SelectedItem.ToString());
                 var stdExQues= context.Student_Exam_Question.Find(stdId, exId, qids[i]);
                 stdExQues.Answer = (comboBox[i].SelectedItem == null)? "0" : comboBox[i].SelectedItem.ToString();
                 context.SaveChanges();
