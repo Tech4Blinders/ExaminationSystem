@@ -15,13 +15,13 @@ as
 		exec GetAnswers @Std_id,@ex_id
 	declare @x int
 		select @x = sum(q_score)
-					from @m
-					where Answer=stdAnswer
+		from @m
+		where Answer=stdAnswer
 	return @x
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 DECLARE @return_value int
-EXEC	@return_value = CalcResult 1 ,1
+EXEC	@return_value = CalcResultÂ 1Â ,1
 SELECT @return_value
 SELECT	'Return Value' = @return_value
 -------------------------------------------------------------------------------
@@ -29,5 +29,5 @@ SELECT	'Return Value' = @return_value
 CREATE PROCEDURE SubmitGrade ( @Std_id int , @ex_id int , @course_id int )
 as
 	DECLARE @grade int
-	EXEC	@grade = CalcResult @Std_id , @ex_id
+	EXEC	@grade = CalcResultÂ @Std_idÂ , @ex_id
 	EXEC    Update_Student_Exam_Course @Std_id, @course_id, @ex_id, @grade
